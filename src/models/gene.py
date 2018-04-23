@@ -11,3 +11,4 @@ class Gene(object):
         self.locationStart = locationStart
         self.locationEnd = locationEnd
         self.chromosone = chromosone
+        self.length = locationEnd - locationStart

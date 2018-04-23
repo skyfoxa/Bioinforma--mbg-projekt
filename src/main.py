@@ -48,9 +48,11 @@ def createGenes():
 
 def main():
     argv = parseArgv()
-    dataHandler = DataHandler(shouldFetch=argv.fetch, dataPath=argv.dataPath)
-    dataHandler.fetchAllDataIfNeededFor(genes=createGenes())
-    dataHandler.multipleSeqAl()
+
+    genes = createGenes()
+    dataHandler = DataHandler(shouldFetch=argv.fetch, dataPath=argv.dataPath, genes=genes)
+    dataHandler.fetchAllDataIfNeededFor()
+    dataHandler.msa(clustalw2Path=r"./clustalw/clustalw")
 
 if __name__ == "__main__":
     main()
