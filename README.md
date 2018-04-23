@@ -12,6 +12,13 @@
 	  **-dataPath**
 	* Data zostavaju zachoane, nic sa nemaze.
 
+## Dependencies
+
+### Clustalw2
+
+Pre vypocet multiple sequence alignment je potrebne mat nainstalovany program 
+[Clustalw2](http://clustal.org/download/current/). Ten je potrebne umiestnit do zlozky **src/clustalw** pod nazvom **clustalw**
+
 ## Jokes
 
 I don't trust atoms... I heard they make up everything.
