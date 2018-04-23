@@ -50,6 +50,7 @@ def main():
     argv = parseArgv()
     dataHandler = DataHandler(shouldFetch=argv.fetch, dataPath=argv.dataPath)
     dataHandler.fetchAllDataIfNeededFor(genes=createGenes())
+    dataHandler.multipleSeqAl()
 
 if __name__ == "__main__":
     main()

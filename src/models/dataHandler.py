@@ -5,6 +5,7 @@ import ftplib
 import sys
 import shutil
 import os
+from Bio import SeqIO, Seq, SeqRecord
 
 __authors__ = "Marek Zvara, Marek Hrvol"
 __copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol"
@@ -70,6 +71,14 @@ class DataHandler(object):
         print("Dir - created at: " + str(path))
         os.makedirs(path)
 
+    def getGeneFrom(self, samfile, gene):
+        for read in samfile.fetch(str(gene.chromosone), gene.locationStart, gene.locationEnd):
+            seq = Seq.Seq(read.seq)
+            if read.is_reverse:
+                seq = seq.reverse_complement()
+            rec = SeqRecord.SeqRecord(seq, read.qname, "", "")
+            yield rec
+
     def fetchAllDataIfNeededFor(self, genes):
         if not self.shouldFetch:
             print("Fetching data not needed")
@@ -78,7 +87,7 @@ class DataHandler(object):
         self.createOrClearDirAt(self.dataPath)
 
         print("Fetching data URLs")
-        urls = self.ftpGetURLs(count=20)
+        urls = self.ftpGetURLs(count=2)
 
         for gene in genes:
             self.createOrClearDirAt(self.dataPath + "/" + gene.name)
@@ -91,9 +100,8 @@ class DataHandler(object):
             samfile = ps.AlignmentFile(url, "rb")
 
             for gene in genes:
-                with open(self.dataPath + "/" + gene.name + "/" + dirName + ".bam", 'w') as outfile:
-                    for read in samfile.fetch(str(gene.chromosone), gene.locationStart, gene.locationEnd):
-                        outfile.write(str(read))
+                with open(self.dataPath + "/" + gene.name + "/" + dirName + ".fasta", 'w') as outfile:
+                    SeqIO.write(self.getGeneFrom(samfile, gene), outfile, "fasta")
 
             self.cleanUpDownloading(toDir=bamBaiPath)
             print("Done: " + dirName)
@@ -101,3 +109,6 @@ class DataHandler(object):
             samfile.close()
 
         print("Fetching genes ended")
+
+    def multipleSeqAl(self):
+        pass
