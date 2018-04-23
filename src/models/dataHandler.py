@@ -15,8 +15,9 @@ __description__ = "MBG"
 # ./samtools view -b ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/data/HG00096/alignment/HG00096.mapped.ILLUMINA.bwa.GBR.low_coverage.20120522.bam 4:99792835-99851788 > HG00096.bam
 
 class DataHandler(object):
-    def __init__(self, shouldFetch):
+    def __init__(self, shouldFetch, dataPath):
         self.shouldFetch = shouldFetch
+        self.dataPath = dataPath
 
     def getURLFor(self, folderName):
         baseURL = "ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/data"
@@ -53,32 +54,50 @@ class DataHandler(object):
 
         return urls
 
-    def cleanUpDownloading(self):
+    def cleanUpDownloading(self, toDir):
         source = './'
-        destination = './data/bam.bai/'
 
         files = os.listdir(source)
         for f in files:
             if f.endswith("bam.bai"):
-                shutil.move(source + f, destination)
+                shutil.move(source + f, toDir)
+
+    def createOrClearDirAt(self, path):
+        if os.path.exists(path):
+            shutil.rmtree(path)
+            print("Dir - content removed at: " + str(path))
+
+        print("Dir - created at: " + str(path))
+        os.makedirs(path)
 
     def fetchAllDataIfNeededFor(self, genes):
         if not self.shouldFetch:
             print("Fetching data not needed")
             return
 
+        self.createOrClearDirAt(self.dataPath)
+
         print("Fetching data URLs")
-        urls = self.ftpGetURLs()
+        urls = self.ftpGetURLs(count=20)
+
+        for gene in genes:
+            self.createOrClearDirAt(self.dataPath + "/" + gene.name)
+
+        bamBaiPath = self.dataPath + "/" + "bam.bai"
+        self.createOrClearDirAt(bamBaiPath)
+
         for (dirName, url) in urls:
             print("Downloading: " + dirName)
             samfile = ps.AlignmentFile(url, "rb")
 
-            with open("./data/" + dirName + ".bam", 'w') as outfile:
-                for read in samfile.fetch('4', 99792835, 99851788):
-                    outfile.write(str(read))
+            for gene in genes:
+                with open(self.dataPath + "/" + gene.name + "/" + dirName + ".bam", 'w') as outfile:
+                    for read in samfile.fetch(str(gene.chromosone), gene.locationStart, gene.locationEnd):
+                        outfile.write(str(read))
 
+            self.cleanUpDownloading(toDir=bamBaiPath)
             print("Done: " + dirName)
 
             samfile.close()
 
-        self.cleanUpDownloading()
+        print("Fetching genes ended")

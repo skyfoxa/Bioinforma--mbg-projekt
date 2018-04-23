@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab114f8a-fbb4-4cb0-aa07-a63a067b7c8f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/models/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/models/dataHandler.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/models/gene.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/__init__.py" afterPath="$PROJECT_DIR$/src/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.py" afterPath="$PROJECT_DIR$/src/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/__init__.py" afterPath="$PROJECT_DIR$/src/models/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/dataHandler.py" afterPath="$PROJECT_DIR$/src/models/dataHandler.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,9 +21,11 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-              <folding />
+            <state relative-caret-position="202">
+              <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+              <folding>
+                <element signature="e#24#51#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -30,8 +33,8 @@
       <file leaf-file-name="dataHandler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/dataHandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+            <state relative-caret-position="127">
+              <caret line="90" column="32" lean-forward="true" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
               <folding>
                 <element signature="e#24#42#0" expanded="true" />
               </folding>
@@ -39,31 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/__init__.py">
+      <file leaf-file-name="libcalignmentfile.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2017.2/python_stubs/-730671433/pysam/libcalignmentfile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="30" lean-forward="true" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="codecs.py" pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/codecs.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="36" lean-forward="true" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
+            <state relative-caret-position="166">
+              <caret line="698" column="8" lean-forward="false" selection-start-line="698" selection-start-column="8" selection-end-line="698" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -78,16 +61,22 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ftpGetURLs</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/models/dataHandler.py" />
-        <option value="$PROJECT_DIR$/src/__init__.py" />
         <option value="$PROJECT_DIR$/src/models/__init__.py" />
+        <option value="$PROJECT_DIR$/src/__init__.py" />
+        <option value="$PROJECT_DIR$/src/models/gene.py" />
         <option value="$PROJECT_DIR$/src/main.py" />
+        <option value="$PROJECT_DIR$/src/models/dataHandler.py" />
       </list>
     </option>
   </component>
@@ -172,7 +161,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Semestralka" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/main.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="PARAMETERS" value="-dataPath=./data -fetch=True" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
@@ -207,7 +196,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39719626" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39719626" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -226,22 +215,22 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/main.py</url>
-          <line>13</line>
-          <option name="timeStamp" value="7" />
+          <url>file://$PROJECT_DIR$/src/models/dataHandler.py</url>
+          <line>73</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/main.py</url>
-          <line>14</line>
-          <option name="timeStamp" value="8" />
+          <line>50</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/models/dataHandler.py</url>
-          <line>65</line>
-          <option name="timeStamp" value="10" />
+          <line>85</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="11" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -250,7 +239,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#24#51#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -304,22 +295,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="36" lean-forward="true" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="30" lean-forward="true" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
@@ -328,21 +303,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="32" lean-forward="true" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/gene.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="67" lean-forward="false" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/dataHandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+        <state relative-caret-position="127">
+          <caret line="90" column="32" lean-forward="true" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
           <folding>
             <element signature="e#24#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2017.2/python_stubs/-730671433/pysam/libcalignmentfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="698" column="8" lean-forward="false" selection-start-line="698" selection-start-column="8" selection-end-line="698" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-          <folding />
+        <state relative-caret-position="202">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#51#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
