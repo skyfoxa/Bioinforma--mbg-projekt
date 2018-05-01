@@ -2,7 +2,7 @@
 
 ## Master
 
-Hlavna vetva - najaktualnejsi kod, -Master2- vetva je backup.
+Hlavna vetva - najaktualnejsi kod, **Master2** vetva je backup.
 
 ## Master2
 ### Spustenie
