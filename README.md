@@ -1,6 +1,11 @@
 # Bioinforma
 
-## Spustenie
+## Master2
+
+Hlavna vetva - najaktualnejsi kod, -Master- vetva je backup.
+
+## Master
+### Spustenie
 
 * python main.py -dataPath={path_to_data_folder} -fetch=True
 	* Priznak fetch spusti stahovanie dat do zlozky urcenej cestou v **-dataPath**
@@ -12,9 +17,9 @@
 	  **-dataPath**
 	* Data zostavaju zachoane, nic sa nemaze.
 
-## Dependencies
+### Dependencies
 
-### Clustalw2
+#### Clustalw2
 
 Pre vypocet multiple sequence alignment je potrebne mat nainstalovany program 
 [Clustalw2](http://clustal.org/download/current/). Ten je potrebne umiestnit do zlozky **src/clustalw** pod nazvom **clustalw**
