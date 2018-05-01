@@ -4,6 +4,8 @@
 
 Hlavna vetva - najaktualnejsi kod, **Master2** vetva je backup.
 
+* na stiahnutie dat sa pouziva nastroj [Ferret](http://limousophie35.github.io/Ferret/)
+
 ## Master2
 ### Spustenie
 
