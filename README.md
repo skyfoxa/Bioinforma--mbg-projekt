@@ -1,10 +1,10 @@
 # Bioinforma
 
-## Master2
-
-Hlavna vetva - najaktualnejsi kod, -Master- vetva je backup.
-
 ## Master
+
+Hlavna vetva - najaktualnejsi kod, -Master2- vetva je backup.
+
+## Master2
 ### Spustenie
 
 * python main.py -dataPath={path_to_data_folder} -fetch=True
