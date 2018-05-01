@@ -16,9 +16,25 @@ class DataHandler(object):
         self.gene2Path = gene2
 
         self.__createArraysFrom__(gene1, gene2)
+        self.checkIfSameGenes()
 
 
     def __createArraysFrom__(self, gene1Path, gene2Path):
-        gene1Data = np.genfromtxt(gene1Path, delimiter='\t', dtype=str)
-        gene2Data = np.genfromtxt(gene2Path, delimiter='\t', dtype=str)
+        gene1 = np.genfromtxt(gene1Path, delimiter='\t', dtype=str)
+        gene2 = np.genfromtxt(gene2Path, delimiter='\t', dtype=str)
+        self.gene1Info, self.gene1Data = self.__splitData__(gene1)
+        self.gene2Info, self.gene2Data = self.__splitData__(gene2)
+        self.gene1Data = self.__deleteLastColumns__(self.gene1Data)
+        self.gene2Data = self.__deleteLastColumns__(self.gene2Data)
 
+
+    def __splitData__(self, data, numberOfCols = 6):
+        part2 = data[:,numberOfCols:]
+        part1 = data[:,:numberOfCols]
+        return part1, part2
+
+    def __deleteLastColumns__(self, data, howMany = 1):
+        return data[:,:-(1 + howMany)]
+
+    def checkIfSameGenes(self):
+        assert (self.gene1Info[:,1] == self.gene2Info[:,1]).all(), "Names of the individuals do not match!"
