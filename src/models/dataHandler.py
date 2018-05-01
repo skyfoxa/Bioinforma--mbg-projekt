@@ -15,10 +15,10 @@ class DataHandler(object):
         self.gene1Path = gene1
         self.gene2Path = gene2
 
-        self.__createArraysFrom(gene1, gene2)
+        self.__createArraysFrom__(gene1, gene2)
 
 
-    def __createArraysFrom(self, gene1Path, gene2Path):
-        self.gene1 = np.genfromtxt(gene1Path, delimiter='\t', dtype=str)
-        self.gene2 = np.genfromtxt(gene2Path, delimiter='\t', dtype=str)
+    def __createArraysFrom__(self, gene1Path, gene2Path):
+        gene1Data = np.genfromtxt(gene1Path, delimiter='\t', dtype=str)
+        gene2Data = np.genfromtxt(gene2Path, delimiter='\t', dtype=str)
 
