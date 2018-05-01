@@ -13,6 +13,8 @@ __description__ = "MBG"
 # ./samtools view -b ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/phase3/data/HG00096/alignment/HG00096.mapped.ILLUMINA.bwa.GBR.low_coverage.20120522.bam 4:99792835-99851788 > HG00096.bam
 
 class DataHandler(object):
+    populations = None
+
     def __init__(self, gene1, gene2):
         self.gene1Path = gene1
         self.gene2Path = gene2
@@ -44,7 +46,7 @@ class DataHandler(object):
 
     def __addPopulationsToData__(self):
         self.fetchPopulations()
-        
+
         if len(self.populations.keys()) != 0:
             self.gene1Info = np.apply_along_axis(self.__addPopulation__, 1, self.gene1Info)
             self.gene2Info = np.apply_along_axis(self.__addPopulation__, 1, self.gene2Info)
