@@ -2,6 +2,7 @@
 
 import argparse
 import os
+from src import DataHandler
 
 __authors__ = "Marek Zvara, Marek Hrvol, Filip Šamánek"
 __copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol, Filip Šamánek"
@@ -19,29 +20,29 @@ def parseArgv():
     """
     parser = argparse.ArgumentParser(description='Gen correlation detector')
 
-    parser.add_argument('-dataPath', type=str,
-                        help='Path to save fetched data.')
-    parser.add_argument('-fetch', type=bool,
-                        help='If true, {dataPath} will be deleted and the data will be fetched again')
+    parser.add_argument('-gene1', type=str,
+                        help='Path to gene 1 - .ped file.')
+
+    parser.add_argument('-gene2', type=str,
+                        help='Path to gene 2 - .ped file.')
 
     args = parser.parse_args()
 
-    if args.dataPath == None:
-        raise AttributeError("Specify correct path for data")
+    if args.gene1 == None or args.gene2 == None:
+        raise AttributeError("Specify correct path for genes data")
 
-    if os.path.exists(args.dataPath):
-        if not os.path.isdir(args.dataPath):
-            raise AttributeError("Specify path doesn't lead to directory")
+    if not os.path.exists(args.gene1):
+        raise AttributeError("Specify path doesn't lead to .ped file")
 
-    if args.fetch == None:
-        args.fetch = False
+    if not os.path.exists(args.gene2):
+        raise AttributeError("Specify path doesn't lead to .ped file")
 
     return args
 
 
 def main():
     argv = parseArgv()
-
+    dataHandler = DataHandler(gene1=argv.gene1, gene2=argv.gene2)
 
 if __name__ == "__main__":
     main()
