@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 
-from src import DataHandler
-from src import Gene
 import argparse
 import os
 
-__authors__ = "Marek Zvara, Marek Hrvol"
-__copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol"
-__email__ = "zvaramar@fel.cvut.cz, hrvolmar@fel.cvut.cz"
+__authors__ = "Marek Zvara, Marek Hrvol, Filip Šamánek"
+__copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol, Filip Šamánek"
+__email__ = "zvaramar@fel.cvut.cz, hrvolmar@fel.cvut.cz, samanfil@fel.cvut.cz"
 __description__ = "MBG"
 
 def parseArgv():
@@ -40,19 +38,10 @@ def parseArgv():
 
     return args
 
-def createGenes():
-    g1 = Gene(name="eIF4E1", locationStart=99792835, locationEnd=99851788, chromosone=4)
-    g2 = Gene(name="eIF4G1", locationStart=184032283, locationEnd=184053146, chromosone=3)
-
-    return [g1, g2]
 
 def main():
     argv = parseArgv()
 
-    genes = createGenes()
-    dataHandler = DataHandler(shouldFetch=argv.fetch, dataPath=argv.dataPath, genes=genes)
-    dataHandler.fetchAllDataIfNeededFor()
-    dataHandler.msa(clustalw2Path=r"./clustalw/clustalw")
 
 if __name__ == "__main__":
     main()
