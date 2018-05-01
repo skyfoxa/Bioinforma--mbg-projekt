@@ -1,0 +1,7 @@
+#Data subfolders - to avoid overriding 
+./Ferret/eIF4E1/*
+./Ferret/eIF4EBP1/*
+./Ferret/eIF4EBP2/*
+./Ferret/eIF4EBP3/*
+./Ferret/eIF4G1/*
+./Ferret/eIF4G3/*
