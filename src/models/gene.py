@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-__authors__ = "Marek Zvara, Marek Hrvol"
-__copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol"
-__email__ = "zvaramar@fel.cvut.cz, hrvolmar@fel.cvut.cz"
+__authors__ = "Marek Zvara, Marek Hrvol, Filip Šamánek"
+__copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol, Filip Šamánek"
+__email__ = "zvaramar@fel.cvut.cz, hrvolmar@fel.cvut.cz, samanfil@fel.cvut.cz"
 __description__ = "MBG"
 
 class Gene(object):

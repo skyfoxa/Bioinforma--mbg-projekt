@@ -6,6 +6,9 @@ Hlavna vetva - najaktualnejsi kod, **Master2** vetva je backup.
 
 * na stiahnutie dat sa pouziva nastroj [Ferret](http://limousophie35.github.io/Ferret/)
 
+Na vypocet korelacie pouzivame metodu [ANOVA](https://cs.wikipedia.org/wiki/Anal%C3%BDza_rozptylu). Nullova
+hypoteza je, ze su data zhodne. Ak je p-value <= 0.05, tak nullovu hypotezu zamietame.
+
 ## Master2
 ### Spustenie
 

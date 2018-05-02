@@ -1,3 +1,13 @@
+<<<<<<< HEAD
 .idea/
 src/__pycache__/
 src/models/__pycache__/
+=======
+#Data subfolders - to avoid overriding 
+./Ferret/eIF4E1/*
+./Ferret/eIF4EBP1/*
+./Ferret/eIF4EBP2/*
+./Ferret/eIF4EBP3/*
+./Ferret/eIF4G1/*
+./Ferret/eIF4G3/*
+>>>>>>> 0baadab12858eb0aa38da5f0de080258e812c8e6
