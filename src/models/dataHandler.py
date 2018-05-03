@@ -14,6 +14,12 @@ __description__ = "MBG"
 
 class DataHandler(object):
     populations = None
+    gene1Data = None
+    gene2Data = None
+    gene1Info = None
+    gene2Info = None
+    referenceGene1 = None
+    referenceGene2 = None
 
     def __init__(self, gene1, gene2):
         self.gene1Data, self.gene1Info, self.referenceGene1 = self.__initGene__(gene1)
