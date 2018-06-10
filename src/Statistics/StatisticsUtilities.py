@@ -35,9 +35,8 @@ class StatisticsUtilities(object):
 
     @staticmethod
     def getExpectedField(counts, mutation1, mutation2):
-        return  (counts[0][mutation1] / (counts[0][0] + counts[0][1])) * \
-                         (counts[1][mutation2] / (counts[1][0] + counts[1][1])) * \
-                         (counts[1][0] + counts[1][1])
+        return (counts[0][mutation1] * counts[1][mutation2]) / (counts[0][0] + counts[0][1])
+
 
     @staticmethod
     def calculateCountsInCols(col1, col2):
