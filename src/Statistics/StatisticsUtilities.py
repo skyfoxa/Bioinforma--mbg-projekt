@@ -48,10 +48,10 @@ class StatisticsUtilities(object):
         col1Counts = getCounts(col1)
         col2Counts = getCounts(col2)
 
-        counts[0][0] = col1Counts[1]
-        counts[0][1] = col1Counts[0]
-        counts[1][0] = col2Counts[1]
-        counts[1][1] = col2Counts[0]
+        counts[0][0] = col1Counts[True]
+        counts[0][1] = col1Counts[False]
+        counts[1][0] = col2Counts[True]
+        counts[1][1] = col2Counts[False]
 
         return counts
 
