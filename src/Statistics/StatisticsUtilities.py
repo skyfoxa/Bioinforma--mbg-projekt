@@ -26,7 +26,14 @@ class StatisticsUtilities(object):
 
     @staticmethod
     def calculateObserved(col1, col2):
-        raise Exception("iStatistics - calculateObserved(self) not implemented")
+        observed = np.empty((2, 2), dtype=float)
+
+        observed[0][0] = StatisticsUtilities.__getCounts__(np.logical_and(col1, col2))[True]
+        observed[0][1] = StatisticsUtilities.__getCounts__(np.greater(col1, col2))[True]
+        observed[1][0] = StatisticsUtilities.__getCounts__(np.less(col1, col2))[True]
+        observed[1][1] = StatisticsUtilities.__getCounts__(np.logical_and(np.logical_not(col1), np.logical_not(col2)))[True]
+
+        return observed
 
 
     @staticmethod
@@ -39,20 +46,21 @@ class StatisticsUtilities(object):
 
     @staticmethod
     def calculateCountsInCols(col1, col2):
-        def getCounts(col):
-            unique, counts = np.unique(col, return_counts=True)
-            return dict(zip(unique, counts))
-
         counts = np.empty((2,2), dtype=float)
 
-        col1Counts = getCounts(col1)
-        col2Counts = getCounts(col2)
+        col1Counts = StatisticsUtilities.__getCounts__(col1)
+        col2Counts = StatisticsUtilities.__getCounts__(col2)
 
-        counts[0][0] = col1Counts[1]
-        counts[0][1] = col1Counts[0]
-        counts[1][0] = col2Counts[1]
-        counts[1][1] = col2Counts[0]
+        counts[0][0] = col1Counts[True]
+        counts[0][1] = col1Counts[False]
+        counts[1][0] = col2Counts[True]
+        counts[1][1] = col2Counts[False]
 
         return counts
+
+    @staticmethod
+    def __getCounts__(col):
+        unique, counts = np.unique(col, return_counts=True)
+        return dict(zip(unique, counts))
 
 
