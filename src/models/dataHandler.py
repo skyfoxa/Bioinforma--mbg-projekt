@@ -31,7 +31,7 @@ class DataHandler(object):
     def __initGene__(self, genePath):
         geneInfo, geneData = self.__createArraysFrom__(genePath)
         referenceGene = self.__getReferenceSeq__(geneData)
-        return geneInfo, geneData, referenceGene
+        return geneData, geneInfo, referenceGene
 
 
 
