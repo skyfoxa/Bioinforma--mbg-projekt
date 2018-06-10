@@ -13,5 +13,5 @@ class iFilter(object):
         self.data = data
 
     def filterData(self):
-        raise "iFilter - filterData(self) must be implemented"
+        raise Exception("iFilter - filterData(self) must be implemented")
 

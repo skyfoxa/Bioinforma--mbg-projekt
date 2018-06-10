@@ -3,6 +3,8 @@
 import argparse
 import os
 from src import DataHandler
+from .Statistics import *
+from .models.Filters import *
 
 __authors__ = "Marek Zvara, Marek Hrvol, Filip Šamánek"
 __copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol, Filip Šamánek"
