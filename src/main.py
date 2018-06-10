@@ -42,7 +42,9 @@ def parseArgv():
     return args
 
 def tests():
-    ChiSquared(None, None).test()
+    ChiSquared(None, None).testExpected()
+    ChiSquared(None, None).testObserved()
+
 
 def main():
     argv = parseArgv()
@@ -55,4 +57,4 @@ def main():
 
 if __name__ == "__main__":
     tests()
-    main()
+    # main()
