@@ -11,3 +11,5 @@ src/models/__pycache__/
 ./Ferret/eIF4G1/*
 ./Ferret/eIF4G3/*
 >>>>>>> 0baadab12858eb0aa38da5f0de080258e812c8e6
+src/Statistics/__pycache__/
+src/models/Filters/__pycache__/
