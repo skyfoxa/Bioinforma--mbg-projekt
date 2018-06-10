@@ -13,13 +13,10 @@ class StatisticsUtilities(object):
     def calculateExpected(col1, col2): #TODO: rename variables names
         counts = StatisticsUtilities.calculateCountsInCols(col1, col2)
         expected = np.empty((2,2), dtype=float)
-        expected[0][0] = StatisticsUtilities.getExpectedField(counts,False,False)
 
-        expected[0][1] = StatisticsUtilities.getExpectedField(counts,False,True)
-
-        expected[1][0] = StatisticsUtilities.getExpectedField(counts,True,False)
-
-        expected[1][1] = StatisticsUtilities.getExpectedField(counts,True,True)
+        for i in range(2):
+            for j in range(2):
+                expected[i][j] = StatisticsUtilities.getExpectedField(counts,i,j)
 
         return expected
 
@@ -38,10 +35,8 @@ class StatisticsUtilities(object):
 
     @staticmethod
     def getExpectedField(counts, mutation1, mutation2):
-        mutInt1 = int(mutation1)
-        mutInt2 = int(mutation2)
-        return (counts[0][mutInt1] / (counts[0][0] + counts[0][1])) * \
-                         (counts[1][mutInt2] / (counts[1][0] + counts[1][1])) * \
+        return  (counts[0][mutation1] / (counts[0][0] + counts[0][1])) * \
+                         (counts[1][mutation2] / (counts[1][0] + counts[1][1])) * \
                          (counts[1][0] + counts[1][1])
 
     @staticmethod
@@ -60,17 +55,9 @@ class StatisticsUtilities(object):
 
     @staticmethod
     def __getCounts__(col):
-        d[True] = col.sum();
+        d = {}
+        d[True] = col.sum()
         d[False] = len(col) - d[True]
-        # unique, counts = np.unique(col, return_counts=True)
-        #
-        # d = dict(zip(unique, counts))
-        #
-        # if True not in d:
-        #     d[True] = 0
-        #
-        # if False not in d:
-        #     d[False] = 0
 
         return d
 
