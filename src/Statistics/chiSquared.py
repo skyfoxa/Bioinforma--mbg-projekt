@@ -16,12 +16,13 @@ class ChiSquared(iStatistics):
     def compute(self):
         for colM1 in self.geneMatrix1.T:
             for colM2 in self.geneMatrix2.T:
-                self.computeCols(colM1, colM2)
+                self.__computeCols__(colM1, colM2)
 
 
-    def computeCols(self, colM1, colM2):
+    def __computeCols__(self, colM1, colM2):
         StatisticsUtilities.calculateExpected(colM1, colM2)
         StatisticsUtilities.calculateObserved(colM1, colM2)
+        ...
 
     def validate(self):
         raise Exception("iStatistics - validate(self) not implemented")
