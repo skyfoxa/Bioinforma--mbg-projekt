@@ -3,8 +3,8 @@
 import argparse
 import os
 from src import DataHandler
-from .Statistics import *
-from .models.Filters import *
+from src.Statistics import *
+from src.models.Filters import *
 
 __authors__ = "Marek Zvara, Marek Hrvol, Filip Šamánek"
 __copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol, Filip Šamánek"
@@ -43,8 +43,10 @@ def parseArgv():
 
 
 def main():
-    argv = parseArgv()
-    dataHandler = DataHandler(gene1=argv.gene1, gene2=argv.gene2)
+    # argv = parseArgv()
+    # dataHandler = DataHandler(gene1=argv.gene1, gene2=argv.gene2)
+    chi = ChiSquared(None, None)
+    chi.test()
 
 if __name__ == "__main__":
     main()
