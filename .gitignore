@@ -8,5 +8,9 @@ src/models/__pycache__/
 ./Ferret/eIF4EBP3/*
 ./Ferret/eIF4G1/*
 ./Ferret/eIF4G3/*
+
+./Ferret/Negative/COX6B2/*
+./Ferret/Negative/GOLGA5/*
+./Ferret/Negative/POLG/*
 src/Statistics/__pycache__/
 src/models/Filters/__pycache__/
