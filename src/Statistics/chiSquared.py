@@ -11,7 +11,7 @@ __description__ = "MBG"
 
 class ChiSquared(iStatistics):
 
-    threshold01 = 6.635
+    threshold01 = 106.635
     c1 = 0
     c2 = 0
 
@@ -33,7 +33,9 @@ class ChiSquared(iStatistics):
 
         pVal = np.sum(np.divide(np.square(np.subtract(observed, expected)), expected))
 
+
         if pVal > self.threshold01:
+            # print(str(pVal) + " >>>> " + str(observed[0][0]) + " >>> " + str(observed[0][0] + observed[0][1]) + " >>>> " + str(observed[0][0] + observed[1][0]))
             # print(pVal)
             self.c1 += 1
         else:
