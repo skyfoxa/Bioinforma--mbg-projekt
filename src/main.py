@@ -51,6 +51,9 @@ def main():
     gene1Filtered = BooleanReferenceSeqFilter(dataHandler.gene1Data, dataHandler.referenceGene1).filterData()
     gene2Filtered = BooleanReferenceSeqFilter(dataHandler.gene2Data, dataHandler.referenceGene2).filterData()
 
+    gene1Filtered = LowMutationsFilter(gene1Filtered).filterData()
+    gene2Filtered = LowMutationsFilter(gene2Filtered).filterData()
+
     chiSquared = ChiSquared(gene1Filtered, gene2Filtered)
     chiSquared.compute()
 
