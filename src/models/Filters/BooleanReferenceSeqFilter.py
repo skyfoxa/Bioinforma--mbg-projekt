@@ -3,5 +3,11 @@ from .iFilter import iFilter
 
 
 class BooleanReferenceSeqFilter(iFilter):
-    def filterData(self, refSeq):
-        return self.data == refSeq
+    refSeq = None
+
+    def __init__(self, data, refSeq):
+        super().__init__(data)
+        self.refSeq = refSeq
+
+    def filterData(self):
+        return self.data == self.refSeq
