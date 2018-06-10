@@ -41,12 +41,14 @@ def parseArgv():
 
     return args
 
-
-def main():
-    # argv = parseArgv()
-    # dataHandler = DataHandler(gene1=argv.gene1, gene2=argv.gene2)
+def tests():
     chi = ChiSquared(None, None)
     chi.test()
 
+def main():
+    argv = parseArgv()
+    dataHandler = DataHandler(gene1=argv.gene1, gene2=argv.gene2)
+
 if __name__ == "__main__":
+    tests()
     main()
