@@ -10,7 +10,7 @@ __description__ = "MBG"
 # interface for filters used in Statistic tests
 class LowMutationsFilter(iFilter):
     def __init__(self, data):
-        iFilter.__init__(self, data)
+        super().__init__(data)
 
     def filterData(self):
         return self.data
