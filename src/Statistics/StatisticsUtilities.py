@@ -25,10 +25,10 @@ class StatisticsUtilities(object):
     def calculateObserved(col1, col2):
         observed = np.empty((2, 2), dtype=float)
 
-        observed[0][0] = StatisticsUtilities.__getCounts__(np.logical_and(col1, col2))[True]
-        observed[0][1] = StatisticsUtilities.__getCounts__(np.greater(col1, col2))[True]
-        observed[1][0] = StatisticsUtilities.__getCounts__(np.less(col1, col2))[True]
-        observed[1][1] = StatisticsUtilities.__getCounts__(np.logical_and(np.logical_not(col1), np.logical_not(col2)))[True]
+        observed[0][0] = np.logical_and(col1, col2).sum()
+        observed[0][1] = np.greater(col1, col2).sum()
+        observed[1][0] = np.less(col1, col2).sum()
+        observed[1][1] = np.logical_not(np.logical_or(col1, col2)).sum()
 
         return observed
 
