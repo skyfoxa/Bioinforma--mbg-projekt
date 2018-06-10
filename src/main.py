@@ -42,12 +42,16 @@ def parseArgv():
     return args
 
 def tests():
-    chi = ChiSquared(None, None)
-    chi.test()
+    ChiSquared(None, None).test()
 
 def main():
     argv = parseArgv()
     dataHandler = DataHandler(gene1=argv.gene1, gene2=argv.gene2)
+    gene1Filtered = BooleanReferenceSeqFilter(dataHandler.gene1Data, dataHandler.referenceGene1).filterData()
+    gene2Filtered = BooleanReferenceSeqFilter(dataHandler.gene2Data, dataHandler.referenceGene2).filterData()
+
+    chiSquared = ChiSquared(gene1Filtered, gene2Filtered)
+    chiSquared.compute()
 
 if __name__ == "__main__":
     tests()
