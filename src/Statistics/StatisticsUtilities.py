@@ -60,15 +60,17 @@ class StatisticsUtilities(object):
 
     @staticmethod
     def __getCounts__(col):
-        unique, counts = np.unique(col, return_counts=True)
-
-        d = dict(zip(unique, counts))
-
-        if True not in d:
-            d[True] = 0
-
-        if False not in d:
-            d[False] = 0
+        d[True] = col.sum();
+        d[False] = len(col) - d[True]
+        # unique, counts = np.unique(col, return_counts=True)
+        #
+        # d = dict(zip(unique, counts))
+        #
+        # if True not in d:
+        #     d[True] = 0
+        #
+        # if False not in d:
+        #     d[False] = 0
 
         return d
 
