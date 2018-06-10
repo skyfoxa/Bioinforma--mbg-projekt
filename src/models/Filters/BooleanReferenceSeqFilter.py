@@ -10,4 +10,4 @@ class BooleanReferenceSeqFilter(iFilter):
         self.refSeq = refSeq
 
     def filterData(self):
-        return self.data == self.refSeq
+        return self.data != self.refSeq
