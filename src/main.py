@@ -58,5 +58,5 @@ def main():
     chiSquared.compute()
 
 if __name__ == "__main__":
-    tests()
-    # main()
+    # tests()
+    main()

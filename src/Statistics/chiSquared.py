@@ -10,6 +10,11 @@ __email__ = "zvaramar@fel.cvut.cz, hrvolmar@fel.cvut.cz, samanfil@fel.cvut.cz"
 __description__ = "MBG"
 
 class ChiSquared(iStatistics):
+
+    threshold01 = 6.635
+    c1 = 0
+    c2 = 0
+
     def __init__(self, geneMatrix1, geneMatrix2):
         super().__init__(geneMatrix1, geneMatrix2)
 
@@ -18,13 +23,21 @@ class ChiSquared(iStatistics):
             for colM2 in self.geneMatrix2.T:
                 self.__computeCols__(colM1, colM2)
 
+        print(self.c1)
+        print(self.c2)
+
 
     def __computeCols__(self, colM1, colM2):
         expected = StatisticsUtilities.calculateExpected(colM1, colM2)
         observed = StatisticsUtilities.calculateObserved(colM1, colM2)
 
         pVal = np.sum(np.divide(np.square(np.subtract(observed, expected)), expected))
-        print(pVal)
+
+        if pVal > self.threshold01:
+            # print(pVal)
+            self.c1 += 1
+        else:
+            self.c2 += 1
 
 
     def validate(self):
