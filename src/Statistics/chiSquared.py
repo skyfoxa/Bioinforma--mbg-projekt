@@ -20,9 +20,12 @@ class ChiSquared(iStatistics):
 
 
     def __computeCols__(self, colM1, colM2):
-        StatisticsUtilities.calculateExpected(colM1, colM2)
-        StatisticsUtilities.calculateObserved(colM1, colM2)
-        ...
+        expected = StatisticsUtilities.calculateExpected(colM1, colM2)
+        observed = StatisticsUtilities.calculateObserved(colM1, colM2)
+
+        pVal = np.sum(np.divide(np.square(np.subtract(observed, expected)), expected))
+        print(pVal)
+
 
     def validate(self):
         raise Exception("iStatistics - validate(self) not implemented")
@@ -32,11 +35,11 @@ class ChiSquared(iStatistics):
 
     def testExpected(self):
         col1 = np.array([1, 0, 1, 0, 0])
-        col2 = np.array([1, 0, 0, 0, 0])
+        col2 = np.array([1, 0, 0, 1, 0])
 
         result = StatisticsUtilities.calculateExpected(col1, col2)
 
-        realResult = np.array([[0.4, 1.6], [0.6, 2.4]], dtype=float)
+        realResult = np.array([[0.8, 1.2], [1.2, 1.8]], dtype=float)
         np.testing.assert_allclose(result, realResult, rtol=1e-6)
 
     def testObserved(self):
@@ -47,3 +50,11 @@ class ChiSquared(iStatistics):
 
         realResult = np.array([[1, 1], [1, 2]], dtype=float)
         np.testing.assert_array_equal(result, realResult)
+
+    def testComputeCols(self):
+        self.testExpected()
+        self.testObserved()
+
+        col1 = np.array([1, 0, 1, 0, 0])
+        col2 = np.array([1, 0, 0, 1, 0])
+        self.__computeCols__(col1, col2)

@@ -42,8 +42,7 @@ def parseArgv():
     return args
 
 def tests():
-    ChiSquared(None, None).testExpected()
-    ChiSquared(None, None).testObserved()
+    ChiSquared(None, None).testComputeCols()
 
 
 def main():
