@@ -2,7 +2,7 @@
 
 import argparse
 import os
-from src import DataHandler
+from src.models import DataHandler
 from src.Statistics import *
 from src.models.Filters import *
 
@@ -16,7 +16,7 @@ def parseArgv():
 
         Args:
 
-        Returns:
+        Returns:cd ..
             The return value. Returns object with input params:
 
     """
@@ -34,10 +34,10 @@ def parseArgv():
         raise AttributeError("Specify correct path for genes data")
 
     if not os.path.exists(args.gene1):
-        raise AttributeError("Specify path doesn't lead to .ped file")
+        raise AttributeError("Specified path doesn't lead to .ped file (gene1) - " + str(args.gene1))
 
     if not os.path.exists(args.gene2):
-        raise AttributeError("Specify path doesn't lead to .ped file")
+        raise AttributeError("Specified path doesn't lead to .ped file (gene2) - " + str(args.gene2))
 
     return args
 
