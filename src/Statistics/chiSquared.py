@@ -15,12 +15,15 @@ __description__ = "MBG"
 
 class ChiSquared(iStatistics):
 
-    threshold01 = 10.828
+    threshold01 = None
+    plotTitle = None
     c1 = 0
     c2 = 0
 
-    def __init__(self, geneMatrix1, geneMatrix2):
+    def __init__(self, geneMatrix1, geneMatrix2, plotTitle = "ChiSquared", threshold = 10.828):
         super().__init__(geneMatrix1, geneMatrix2)
+        self.threshold01 = threshold
+        self.plotTitle = plotTitle
 
     def compute(self):
         vals = []
@@ -30,9 +33,9 @@ class ChiSquared(iStatistics):
                 if pVal is not None:
                     vals.append(pVal)
 
-        print(self.c1)
-        print(self.c2)
-        self.plot(vals, "Chi2")
+        print("Positive: " + str(self.c1))
+        print("Negative: " + str(self.c2))
+        self.plot(vals, self.plotTitle)
 
 
 
@@ -50,8 +53,6 @@ class ChiSquared(iStatistics):
         else:
             self.c2 += 1
             return None
-
-
 
 
     def validate(self):

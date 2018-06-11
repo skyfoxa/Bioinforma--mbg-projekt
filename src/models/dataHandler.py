@@ -27,7 +27,7 @@ class DataHandler(object):
         self.gene2Data, self.gene2Info, self.referenceGene2 = self.__initGene__(gene2)
 
         self.checkIfSameGenes()
-        self.__addPopulationsToData__()
+        # self.__addPopulationsToData__()
 
     def __initGene__(self, genePath):
         geneInfo, geneData = self.__createArraysFrom__(genePath)
