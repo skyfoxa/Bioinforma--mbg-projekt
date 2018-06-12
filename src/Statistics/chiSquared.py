@@ -35,6 +35,7 @@ class ChiSquared(iStatistics):
 
         print("Positive: " + str(self.c1))
         print("Negative: " + str(self.c2))
+        print("Ratio: " + str(float(self.c1) / float(self.c2) * 100) + " %")
         self.plot(vals, self.plotTitle)
 
 

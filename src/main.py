@@ -54,11 +54,11 @@ def main():
     gene1Filtered = LowMutationsFilter(gene1Filtered,threshold=5).filterData()
     gene2Filtered = LowMutationsFilter(gene2Filtered, threshold=5).filterData()
 
-    print("Chi Squared TEST")
+    print("###Chi Squared TEST")
     chiSquared = ChiSquared(gene1Filtered, gene2Filtered)
     chiSquared.compute()
 
-    print("Permutation TEST")
+    print("###Permutation TEST")
     permutationTest = PermutationTest(gene1Filtered, gene2Filtered, testClass=ChiSquared.__name__)
     permutationTest.compute()
 
