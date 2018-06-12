@@ -13,16 +13,23 @@ __email__ = "zvaramar@fel.cvut.cz, hrvolmar@fel.cvut.cz, samanfil@fel.cvut.cz"
 __description__ = "MBG"
 
 class PermutationTest(iStatistics):
+    plotTitle = None
 
-    def __init__(self, geneMatrix1, geneMatrix2):
+    def __init__(self, geneMatrix1, geneMatrix2, testClass, plotTitle="PermutationTest"):
         super().__init__(geneMatrix1, geneMatrix2)
+        self.test = globals()[testClass]
+
+        if not issubclass(self.test, iStatistics):
+            raise AttributeError("testClass must be subclass of iStatistics")
+
+        self.plotTitle = plotTitle
 
     def __permutate__(self, geneMatrix):
         return np.random.permutation(geneMatrix)
 
     def compute(self):
-        chiSquared = ChiSquared(self.__permutate__(self.geneMatrix1), self.geneMatrix2, plotTitle="PermutationTest")
-        chiSquared.compute()
+        test = self.test(self.__permutate__(self.geneMatrix1), self.geneMatrix2, plotTitle=self.plotTitle)
+        test.compute()
 
 
     def validate(self):

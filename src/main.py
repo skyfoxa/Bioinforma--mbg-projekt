@@ -59,7 +59,7 @@ def main():
     chiSquared.compute()
 
     print("Permutation TEST")
-    permutationTest = PermutationTest(gene1Filtered, gene2Filtered)
+    permutationTest = PermutationTest(gene1Filtered, gene2Filtered, testClass=ChiSquared.__name__)
     permutationTest.compute()
 
 if __name__ == "__main__":
