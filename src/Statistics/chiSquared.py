@@ -34,9 +34,7 @@ class ChiSquared(iStatistics):
         Config.setChiSquaredThreshold(chiSquaredValues=vals)
         self.classifySamples(vals)
 
-        print("Positive: " + str(self.c1))
-        print("Negative: " + str(self.c2))
-        print("Ratio: " + str(float(self.c1) / float(self.c2) * 100) + " %")
+        self.printResult()
         self.plot(vals, self.plotTitle)
 
 
@@ -55,6 +53,10 @@ class ChiSquared(iStatistics):
             else:
                 self.c2 += 1
 
+    def printResult(self):
+        print("Positive: " + str(self.c1))
+        print("Negative: " + str(self.c2))
+        print("Ratio: " + str(float(self.c1) / float(self.c2) * 100) + " %")
 
     def validate(self):
         raise Exception("iStatistics - validate(self) not implemented")
