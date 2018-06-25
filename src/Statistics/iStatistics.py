@@ -19,6 +19,6 @@ class iStatistics(object):
     def validate(self):
         raise Exception("iStatistics - validate(self) not implemented")
 
-    def plot(self, values, title):
-        raise Exception("iStatistics - plot(self) not implemented")
+    def getResults(self):
+        raise Exception("iStatistics - getResults(self) not implemented")
 
