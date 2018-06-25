@@ -34,5 +34,11 @@ class PermutationTest(iStatistics):
     def getResults(self):
         return self.testResults
 
+    def printResult(self):
+        result = self.getResults()
+        print("Positive: " + str(result["positive"]))
+        print("Negative: " + str(result["negative"]))
+        print("Ratio: " + str(result["ratio"]) + " %")
+
     def validate(self):
         raise Exception("iStatistics - validate(self) not implemented")

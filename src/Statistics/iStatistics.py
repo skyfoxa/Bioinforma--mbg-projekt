@@ -22,3 +22,6 @@ class iStatistics(object):
     def getResults(self):
         raise Exception("iStatistics - getResults(self) not implemented")
 
+    def printResult(self):
+        raise Exception("iStatistics - printResult(self) not implemented")
+

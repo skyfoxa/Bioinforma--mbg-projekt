@@ -58,10 +58,12 @@ def main():
     print("###Chi Squared TEST")
     chiSquared = ChiSquared(gene1Filtered, gene2Filtered)
     chiSquared.compute()
+    chiSquared.printResult()
 
     print("###Permutation TEST")
     permutationTest = PermutationTest(gene1Filtered, gene2Filtered, testClass=ChiSquared.__name__)
     permutationTest.compute()
+    permutationTest.printResult()
 
 
     StatisticsUtilities.compareValues(chiSquared.getResults()["values"],
