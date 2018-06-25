@@ -13,7 +13,7 @@ class Config:
         sortedVals = sorted(chiSquaredValues)
         for i in range (len(sortedVals)-5):
             if sortedVals[i+5] - sortedVals[i] > Config.CHI_SQUARED_EPSILON:
-                print("CHI_SQUARED_THRESHOLD set to: " + sortedVals[i])
+                print("CHI_SQUARED_THRESHOLD set to: " + str(sortedVals[i]))
                 Config.CHI_SQUARED_THRESHOLD = sortedVals[i]
                 return
 
