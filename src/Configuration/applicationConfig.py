@@ -3,6 +3,8 @@ class Config:
     CHI_SQUARED_THRESHOLD = 10.828
     SET_CHI_SQUARED_DYNAMICALLY = True
     CHI_SQUARED_EPSILON = 4
+    VERBOSE = True
+    SHOW_DELETED_VALUES = False
 
     @staticmethod
     def setChiSquaredThreshold(chiSquaredValues):

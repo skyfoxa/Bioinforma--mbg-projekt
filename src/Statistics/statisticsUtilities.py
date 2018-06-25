@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 import numpy as np
-
+import matplotlib.pyplot as plt
+from src.Configuration.applicationConfig import Config
 __authors__ = "Marek Zvara, Marek Hrvol, Filip Šamánek"
 __copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol, Filip Šamánek"
 __email__ = "zvaramar@fel.cvut.cz, hrvolmar@fel.cvut.cz, samanfil@fel.cvut.cz"
@@ -60,4 +61,16 @@ class StatisticsUtilities(object):
 
         return d
 
+    @staticmethod
+    def plotChiSquaredValues():
+
+        StatisticsUtilities.__saveOrShowPlot__("omg")
+
+    @staticmethod
+    def __saveOrShowPlot__(name):
+        if Config.VERBOSE:
+            plt.show()
+        else:
+            plt.savefig(name)
+        plt.close()
 
