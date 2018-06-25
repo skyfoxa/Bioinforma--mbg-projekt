@@ -2,7 +2,11 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.mlab as mlab
 from src.Configuration.applicationConfig import Config
+from scipy.stats import norm
+
+
 __authors__ = "Marek Zvara, Marek Hrvol, Filip Šamánek"
 __copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol, Filip Šamánek"
 __email__ = "zvaramar@fel.cvut.cz, hrvolmar@fel.cvut.cz, samanfil@fel.cvut.cz"
@@ -62,9 +66,39 @@ class StatisticsUtilities(object):
         return d
 
     @staticmethod
-    def plotChiSquaredValues():
+    def compareValues(array1, array2, array1Name, array2Name, plotName):
 
-        StatisticsUtilities.__saveOrShowPlot__("omg")
+        if not Config.SHOW_DELETED_VALUES:
+            array1 = list(filter(lambda val: val >= Config.CHI_SQUARED_THRESHOLD, array1))
+            array2 = list(filter(lambda val: val >= Config.CHI_SQUARED_THRESHOLD, array2))
+        else:
+            plotName = plotName + "_withDeleted"
+
+        plotName = plotName + ".png"
+
+        StatisticsUtilities.__plotHistogram__(array1, 'r', 'g+', array1Name)
+        StatisticsUtilities.__plotHistogram__(array2, 'b', 'y-', array2Name)
+        StatisticsUtilities.__addLegend__()
+        StatisticsUtilities.__saveOrShowPlot__(plotName)
+
+    @staticmethod
+    def __plotHistogram__(values, histColor, fitLineColor, name):
+        # Fit a normal distribution to the data:
+        mu, std = norm.fit(values)
+
+        # Plot the histogram.
+        n, bins, patches = plt.hist(values, density=True, bins=50, alpha=0.6, color=histColor, edgecolor='black', linewidth=1, label="Histogram - " + name)
+
+        # Plot the PDF.
+        y = mlab.normpdf(bins, mu, std)
+        plt.plot(bins, y, fitLineColor, linewidth=2, label="Best fit line - " + name)
+
+
+    @staticmethod
+    def __addLegend__():
+        legend = plt.legend(loc='upper center')
+        frame = legend.get_frame()
+        frame.set_facecolor('0.90')
 
     @staticmethod
     def __saveOrShowPlot__(name):
