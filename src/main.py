@@ -5,6 +5,7 @@ import os
 from src.models import DataHandler
 from src.Statistics import *
 from src.models.Filters import *
+from src.Statistics.statisticsUtilities import *
 
 __authors__ = "Marek Zvara, Marek Hrvol, Filip Šamánek"
 __copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol, Filip Šamánek"
@@ -61,6 +62,14 @@ def main():
     print("###Permutation TEST")
     permutationTest = PermutationTest(gene1Filtered, gene2Filtered, testClass=ChiSquared.__name__)
     permutationTest.compute()
+
+
+    StatisticsUtilities.compareValues(chiSquared.getResults()["values"],
+                                      permutationTest.getResults()["values"],
+                                      ChiSquared.__name__,
+                                      PermutationTest.__name__,
+                                      plotName=dataHandler.gene1Name+" - "+dataHandler.gene2Name
+                                     )
 
 if __name__ == "__main__":
     # tests()
