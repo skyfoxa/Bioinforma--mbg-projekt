@@ -7,6 +7,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
+from src.Configuration.applicationConfig import Config
 
 __authors__ = "Marek Zvara, Marek Hrvol, Filip Šamánek"
 __copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol, Filip Šamánek"
@@ -20,9 +21,8 @@ class ChiSquared(iStatistics):
     c1 = 0
     c2 = 0
 
-    def __init__(self, geneMatrix1, geneMatrix2, plotTitle = "ChiSquared", threshold = 10.828):
+    def __init__(self, geneMatrix1, geneMatrix2, plotTitle = "ChiSquared"):
         super().__init__(geneMatrix1, geneMatrix2)
-        self.threshold01 = threshold
         self.plotTitle = plotTitle
 
     def compute(self):
@@ -47,7 +47,7 @@ class ChiSquared(iStatistics):
 
         pVal = np.sum(np.divide(np.square(np.subtract(observed, expected)), expected))
 
-        if pVal > self.threshold01:
+        if pVal > Config.CHI_SQUARED_THRESHOLD:
             # print(pVal)
             self.c1 += 1
             return pVal
