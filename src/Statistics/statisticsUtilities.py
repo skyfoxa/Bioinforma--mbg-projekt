@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import matplotlib.mlab as mlab
-from src.Configuration.applicationConfig import Config
 from scipy.stats import norm
+from src.Configuration.applicationConfig import Config
 
 
 __authors__ = "Marek Zvara, Marek Hrvol, Filip Šamánek"
@@ -90,7 +91,7 @@ class StatisticsUtilities(object):
         n, bins, patches = plt.hist(values, density=True, bins=50, alpha=0.6, color=histColor, edgecolor='black', linewidth=1, label="Histogram - " + name)
 
         # Plot the PDF.
-        y = mlab.normpdf(bins, mu, std)
+        y = norm.pdf(bins, mu, std)
         plt.plot(bins, y, fitLineColor, linewidth=2, label="Best fit line - " + name)
 
 
