@@ -21,10 +21,12 @@ class DataHandler(object):
     gene2Info = None
     referenceGene1 = None
     referenceGene2 = None
+    gene1Name = None
+    gene2Name = None
 
     def __init__(self, gene1, gene2):
-        self.gene1Data, self.gene1Info, self.referenceGene1 = self.__initGene__(gene1)
-        self.gene2Data, self.gene2Info, self.referenceGene2 = self.__initGene__(gene2)
+        self.gene1Data, self.gene1Info, self.referenceGene1, self.gene1Name = self.__initGene__(gene1)
+        self.gene2Data, self.gene2Info, self.referenceGene2, self.gene2Name = self.__initGene__(gene2)
 
         self.checkIfSameGenes()
         # self.__addPopulationsToData__()
@@ -32,8 +34,8 @@ class DataHandler(object):
     def __initGene__(self, genePath):
         geneInfo, geneData = self.__createArraysFrom__(genePath)
         referenceGene = self.__getReferenceSeq__(geneData)
-        return geneData, geneInfo, referenceGene
-
+        geneName = genePath.split("/")[-1]
+        return geneData, geneInfo, referenceGene, geneName
 
 
     def __createArraysFrom__(self, genePath):
