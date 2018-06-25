@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 
 from .iStatistics import iStatistics
-from src.Statistics.StatisticsUtilities import *
+from src.Statistics.statisticsUtilities import *
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
+from scipy.stats import norm
 
 __authors__ = "Marek Zvara, Marek Hrvol, Filip Šamánek"
 __copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol, Filip Šamánek"
@@ -60,13 +61,22 @@ class ChiSquared(iStatistics):
         raise Exception("iStatistics - validate(self) not implemented")
 
     def plot(self, values, title):
-        plt.plot(values)
+        plt.plot(sorted(values))
         plt.title(title)
         plt.savefig(title)
         plt.close()
 
-        num_bins = 5
-        n, bins, patches = plt.hist(values, num_bins, facecolor='blue', alpha=0.5)
+        num_bins = 50
+        n, bins, patches = plt.hist(values, num_bins, normed=True, facecolor='green', alpha=0.75)
+        plt.xlabel('Chi squared')
+        plt.ylabel('Count')
+
+        mu, sigma = norm.fit(values)
+        y = mlab.normpdf(bins, mu, sigma)
+        l = plt.plot(bins, y, 'r--', linewidth=1)
+
+        plt.axis([0, 100, 0, 500])
+        plt.grid(True)
         plt.savefig("Hist" + title)
         plt.close()
 

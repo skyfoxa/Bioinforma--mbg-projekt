@@ -36,12 +36,13 @@ class PermutationTest(iStatistics):
         raise Exception("iStatistics - validate(self) not implemented")
 
     def plot(self, values, title):
-        plt.plot(values)
-        plt.title(title)
-        plt.savefig(title)
-        plt.close()
-
-        num_bins = 5
-        n, bins, patches = plt.hist(values, num_bins, facecolor='blue', alpha=0.5)
-        plt.savefig("Hist" + title)
-        plt.close()
+        ...
+        # plt.plot(values)
+        # plt.title(title)
+        # plt.savefig(title)
+        # plt.close()
+        #
+        # num_bins = 5
+        # n, bins, patches = plt.hist(values, num_bins, facecolor='blue', alpha=0.5)
+        # plt.savefig("Hist" + title)
+        # plt.close()
