@@ -32,11 +32,11 @@ class ChiSquared(iStatistics):
                 vals.append(chiSquared)
 
         Config.setChiSquaredThreshold(chiSquaredValues=vals)
-        vals = list(filter(lambda val: val >= Config.CHI_SQUARED_THRESHOLD, vals))
+        self.classifySamples(vals)
 
         print("Positive: " + str(self.c1))
         print("Negative: " + str(self.c2))
-        # print("Ratio: " + str(float(self.c1) / float(self.c2) * 100) + " %")
+        print("Ratio: " + str(float(self.c1) / float(self.c2) * 100) + " %")
         self.plot(vals, self.plotTitle)
 
 
@@ -48,13 +48,12 @@ class ChiSquared(iStatistics):
 
         return np.sum(np.divide(np.square(np.subtract(observed, expected)), expected))
 
-        # if chiSquared > Config.CHI_SQUARED_THRESHOLD:
-        #     # print(pVal)
-        #     self.c1 += 1
-        #     return chiSquared
-        # else:
-        #     self.c2 += 1
-        #     return None
+    def classifySamples(self, samples):
+        for sample in samples:
+            if sample > Config.CHI_SQUARED_THRESHOLD:
+                self.c1 += 1
+            else:
+                self.c2 += 1
 
 
     def validate(self):
