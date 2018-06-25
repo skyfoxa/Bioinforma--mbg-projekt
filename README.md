@@ -6,8 +6,12 @@ Hlavna vetva - najaktualnejsi kod, **Master2** vetva je backup.
 
 * na stiahnutie dat sa pouziva nastroj [Ferret](http://limousophie35.github.io/Ferret/)
 
-Na vypocet korelacie pouzivame metodu [ANOVA](https://cs.wikipedia.org/wiki/Anal%C3%BDza_rozptylu). Nullova
-hypoteza je, ze su data zhodne. Ak je p-value <= 0.05, tak nullovu hypotezu zamietame. (to je strasna blbost)
+Aplikácia obsahuje rozhranie pre spúšťanie rôznych štatistických testov. Momentálne sú naimplementované 2 druhy
+testov:
+
+* [Chi-squared test](https://en.wikipedia.org/wiki/Chi-squared_test)
+* [Permutačný test](https://en.wikipedia.org/wiki/Resampling_(statistics)) - zpermutuje dáta a vykoná ľubovolný definovaný
+        štatistický test
 
 ## Master2
 ### Spustenie
