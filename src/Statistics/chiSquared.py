@@ -3,9 +3,6 @@
 from .iStatistics import iStatistics
 from src.Statistics.statisticsUtilities import *
 import numpy as np
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
 from scipy.stats import norm
 from src.Configuration.applicationConfig import Config
@@ -64,20 +61,27 @@ class ChiSquared(iStatistics):
     def plot(self, values, title):
         plt.plot(values)
         plt.title(title)
-        plt.savefig(title)
+        plt.show()
+        # plt.savefig(title)
         plt.close()
 
-        num_bins = 50
-        n, bins, patches = plt.hist(values, num_bins, normed=True, facecolor='green', alpha=0.75)
-        plt.xlabel('Chi squared')
-        plt.ylabel('Count')
+        #norm.rvs(10.0, 2.5, size=500)
+        # Fit a normal distribution to the data:
+        mu, std = norm.fit(values)
 
-        mu, sigma = norm.fit(values)
-        y = mlab.normpdf(bins, mu, sigma)
-        l = plt.plot(bins, y, 'r--', linewidth=1)
+        # Plot the histogram.
+        plt.hist(values, bins=50, alpha=0.6, color='g')
 
-        plt.axis([0, 100, 0, 500])
-        plt.grid(True)
+        # Plot the PDF.
+        xmin, xmax = plt.xlim()
+        x = np.linspace(xmin, xmax, 100)
+        p = norm.pdf(x, mu, std)
+        plt.plot(x, p, 'k', linewidth=2)
+        # title = "Fit results: mu = %.2f,  std = %.2f" % (mu, std)
+        plt.title("Hist " + title)
+        # plt.savefig("Hist" + title)
+        plt.show()
+        plt.close()
 
     def testExpected(self):
         col1 = np.array([1, 0, 1, 0, 0])
