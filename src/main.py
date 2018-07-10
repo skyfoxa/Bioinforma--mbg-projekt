@@ -66,12 +66,12 @@ def main():
     permutationTest.printResult()
 
 
-    StatisticsUtilities.compareValues(chiSquared.getResults()["values"],
-                                      permutationTest.getResults()["values"],
+    StatisticsUtilities.outputResults(chiSquared.getResults(),
+                                      permutationTest.getResults(),
                                       ChiSquared.__name__,
                                       PermutationTest.__name__,
                                       plotName=dataHandler.gene1Name+" - "+dataHandler.gene2Name
-                                     )
+                                      )
 
 if __name__ == "__main__":
     # tests()

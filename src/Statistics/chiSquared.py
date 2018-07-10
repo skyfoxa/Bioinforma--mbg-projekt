@@ -10,9 +10,9 @@ __copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol, Filip Šamánek"
 __email__ = "zvaramar@fel.cvut.cz, hrvolmar@fel.cvut.cz, samanfil@fel.cvut.cz"
 __description__ = "MBG"
 
+
 class ChiSquared(iStatistics):
-    c1 = 0
-    c2 = 0
+    correlations = []
     vals = []
 
     def __init__(self, geneMatrix1, geneMatrix2):
@@ -20,14 +20,14 @@ class ChiSquared(iStatistics):
 
     def compute(self):
         self.vals = []
-        for colM1 in self.geneMatrix1.T:
-            for colM2 in self.geneMatrix2.T:
+        for idx1, colM1 in enumerate(self.geneMatrix1.T):
+            for idx2, colM2 in enumerate(self.geneMatrix2.T):
                 chiSquared = self.__computeCols__(colM1, colM2)
-                self.vals.append(chiSquared)
+                self.vals.append((idx1, idx2, chiSquared))
 
-        Config.setChiSquaredThreshold(chiSquaredValues=self.vals)
-        self.__classifySamples__(self.vals)
-
+        valsFiltered = list(map(lambda val: val[2], self.vals))
+        Config.setChiSquaredThreshold(chiSquaredValues=valsFiltered)
+        self.__classifySamples__()
 
     # returns chiSquared value
     def __computeCols__(self, colM1, colM2):
@@ -36,20 +36,26 @@ class ChiSquared(iStatistics):
 
         return np.sum(np.divide(np.square(np.subtract(observed, expected)), expected))
 
-    def __classifySamples__(self, samples):
-        for sample in samples:
-            if sample > Config.CHI_SQUARED_THRESHOLD:
-                self.c1 += 1
-            else:
-                self.c2 += 1
+    def __classifySamples__(self):
+
+        for idx, sample in enumerate(self.vals):
+            self.vals[idx] += (sample[2] > Config.CHI_SQUARED_THRESHOLD,)
+
 
     def getResults(self):
-        return {"values" : self.vals, "positive" : self.c1, "negative" : self.c2, "ratio" : float(self.c1) / float(self.c2) * 100}
+        classes = np.array(list(map(lambda val: val[3], self.vals)))
+        positive = (classes == True).sum()
+        negative = (classes == False).sum()
+
+
+        return {"values": self.vals, "positive": positive, "negative": negative,
+                "ratio": float(positive) / float(negative) * 100}
 
     def printResult(self):
-        print("Positive: " + str(self.c1))
-        print("Negative: " + str(self.c2))
-        print("Ratio: " + str(float(self.c1) / float(self.c2) * 100) + " %")
+        results = self.getResults()
+        print("Positive: " + str(results["positive"]))
+        print("Negative: " + str(results["negative"]))
+        print("Ratio: " + str(float(results["positive"]) / float(results["negative"]) * 100) + " %")
 
     def validate(self):
         raise Exception("iStatistics - validate(self) not implemented")
