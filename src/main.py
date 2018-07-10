@@ -49,11 +49,11 @@ def tests():
 def main():
     argv = parseArgv()
     dataHandler = DataHandler(gene1=argv.gene1, gene2=argv.gene2)
-    gene1Filtered = BooleanReferenceSeqFilter(dataHandler.gene1Data, dataHandler.referenceGene1).filterData()
-    gene2Filtered = BooleanReferenceSeqFilter(dataHandler.gene2Data, dataHandler.referenceGene2).filterData()
+    gene1Filtered = Transformations.basesToBooleans(dataHandler.gene1Data, dataHandler.referenceGene1)
+    gene2Filtered = Transformations.basesToBooleans(dataHandler.gene2Data, dataHandler.referenceGene2)
 
-    gene1Filtered = LowMutationsFilter(gene1Filtered).filterData()
-    gene2Filtered = LowMutationsFilter(gene2Filtered).filterData()
+    gene1Filtered, indexesOfGene1 = LowMutationsFilter(gene1Filtered, dataHandler.indexesOfGene1).filterData()
+    gene2Filtered, indexesOfGene2 = LowMutationsFilter(gene2Filtered, dataHandler.indexesOfGene2).filterData()
 
     print("###Chi Squared TEST")
     chiSquared = ChiSquared(gene1Filtered, gene2Filtered)

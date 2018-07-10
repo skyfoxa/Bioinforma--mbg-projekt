@@ -8,9 +8,11 @@ __description__ = "MBG"
 # interface for filters used in Statistic tests
 class iFilter(object):
     data = None
+    indexesOfGene = None
 
-    def __init__(self, data):
+    def __init__(self, data, indexesOfGene):
         self.data = data
+        self.indexesOfGene = indexesOfGene
 
     def filterData(self):
         raise Exception("iFilter - filterData(self) must be implemented")
