@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from .iFilter import iFilter
-from .BooleanReferenceSeqFilter import BooleanReferenceSeqFilter
+from .Transformations import Transformations
 import numpy as np
 from src.Configuration.applicationConfig import Config
 
@@ -12,10 +12,10 @@ __description__ = "MBG"
 
 # interface for filters used in Statistic tests
 class LowMutationsFilter(iFilter):
-    def __init__(self, data, threshold = Config.MUTATIONS_THRESHOLD):
+    def __init__(self, data, indexesOfGene, threshold = Config.MUTATIONS_THRESHOLD):
         self.threshold = threshold
-        super().__init__(data)
+        super().__init__(data, indexesOfGene)
 
     def filterData(self):
-        dataBool = (self.data>0).sum(0)>self.threshold
-        return self.data[:, dataBool]
+        dataBoolMap = (self.data>0).sum(axis=0)>self.threshold
+        return (self.data[:, dataBoolMap], self.indexesOfGene[dataBoolMap])
