@@ -4,6 +4,7 @@ import urllib.error
 import urllib.request
 
 import numpy as np
+from src.models.statisticsCorrelation import StatisticsCorrelation
 
 __authors__ = "Marek Zvara, Marek Hrvol, Filip Šamánek"
 __copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol, Filip Šamánek"
@@ -37,6 +38,14 @@ class DataHandler(object):
 
         self.checkIfSameGenes()
         # self.__addPopulationsToData__()
+
+    def mapSamplesToRealGeneCols(self, filteredSamples):
+        for sample in filteredSamples:
+            sample.firstSample = self.indexesOfGene1[sample.firstSample]
+            sample.secondSample = self.indexesOfGene2[sample.secondSample]
+        return filteredSamples
+
+
 
     def __initGene__(self, genePath):
         geneInfo, geneData = self.__createArraysFrom__(genePath)

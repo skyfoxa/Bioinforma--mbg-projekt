@@ -21,4 +21,24 @@ class StatisticsCorrelation:
     def isInCorrelation(self, threshold):
         self.isCorrelated = self.correlationValue > threshold
 
+    @staticmethod
+    def getCorrelatedValues(samples):
+        return list(filter(lambda sample: sample.isCorrelated, samples))
+
+    @staticmethod
+    def writeSamplesToFile(samples, fileName):
+        with open(fileName + ".txt", "w") as f:
+            firstSampleFirst = sorted(samples, key=lambda x: x.firstSample)
+            secondSampleFirst = sorted(samples, key=lambda x: x.secondSample)
+
+            f.write("Korelace prvniho genu s genem druhým. \n"
+                    "Jednotlivé čísla poskytuje informace o pořadí sloupce v genu\n"
+                    "za svistlítkem (|) je korelace druhého genu s prvním (pouze jiné pořadi, prvni sloupec je druhý gen)\n")
+            for idOfSample, sample in enumerate(samples):
+                f.write("{:<5}".format(str(firstSampleFirst[idOfSample].firstSample)) + " <----->   "
+                        + "{:<5}".format(str(firstSampleFirst[idOfSample].secondSample)) + "     |     ")
+                f.write("{:<5}".format(str(secondSampleFirst[idOfSample].secondSample)) + " <----->   "
+                        + "{:<5}".format(str(secondSampleFirst[idOfSample].firstSample)) + "\n")
+
+
 

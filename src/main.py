@@ -6,6 +6,7 @@ from src.models import DataHandler
 from src.Statistics import *
 from src.models.Filters import *
 from src.Statistics.statisticsUtilities import *
+from src.models.statisticsCorrelation import StatisticsCorrelation as sc
 
 __authors__ = "Marek Zvara, Marek Hrvol, Filip Šamánek"
 __copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol, Filip Šamánek"
@@ -59,6 +60,7 @@ def main():
     chiSquared = ChiSquared(gene1Filtered, gene2Filtered)
     chiSquared.compute()
 
+
     chiSquared.printResult()
 
     print("###Permutation TEST")
@@ -66,6 +68,9 @@ def main():
     permutationTest.compute()
     permutationTest.printResult()
 
+    mappedSamples = dataHandler.mapSamplesToRealGeneCols(chiSquared.correlations)
+    filteredMappedSamples = sc.getCorrelatedValues(mappedSamples)
+    sc.writeSamplesToFile(filteredMappedSamples, fileName = dataHandler.gene1Name+" - "+dataHandler.gene2Name)
 
     StatisticsUtilities.outputResults(chiSquared.getResults(),
                                       permutationTest.getResults(),
