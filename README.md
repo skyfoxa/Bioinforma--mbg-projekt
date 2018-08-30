@@ -26,13 +26,17 @@ Zlozka **./Ferret** obsahuje data niekolkych genov, ktore je mozne pouzit ako vs
 
 Pre spustenie je potrebne mat nainstalovany aspon [Python 3.6](https://www.python.org/downloads/release/python-360/). 
 
-#### Terminal
+#### Terminal (Linux)
 
 V terminaly je potrebne spustit napriklad nasledovne:
-1.  `cd PROJECT_ROOT_FOLDER`
-2. `PYTHONPATH="./src:$PYTHONPATH"`
-3. `export PYTHONPATH`
-2. `python3 ./src/main.py -gene1=./Ferret/eIF4E1/eIF4E1.ped -gene2=./Ferret/eIF4G1/eIF4G1.ped`
+1.  `cd PROJECT_ROOT_FOLDER/src/`
+2. `python3 ./main.py -gene1=./Ferret/eIF4E1/eIF4E1.ped -gene2=./Ferret/eIF4G1/eIF4G1.ped`
+
+#### Terminal v GitBash (Windows)
+
+Pre Windows je mozne pouzit nastroj [GitBash](https://git-scm.com/download/win).
+1. `cd PROJECT_ROOT_FOLDER/src/`
+2. `python ./main.py -gene1=./Ferret/eIF4E1/eIF4E1.ped -gene2=./Ferret/eIF4G1/eIF4G1.ped`
 
 #### PyCharm
 
@@ -57,9 +61,9 @@ Skript ma 3 druhy vystupu:
 
 V `PROJECT_ROOT_FOLDER` je subor `test.sh`, ktory sluzi na automatizovane testovanie viacerych genov za sebou. Je mozne si upravit/dopisat vlastne testy. Hromadny vystup sa vypisuje jak do konzole tak do samostatneho suboru  **test.txt**. 
 
-Skript je spustitelny:
-- Linux/MAC OS: bash ./test.sh
--Windows: unkown
+Skript je spustitelny cez:
+- Linux/MAC OS: v termanili spustit `bash ./test.sh`
+- Windows: v GitBash spustit `bash ./test.sh` alebo len `test.sh`
 
 ## Master2
 ### Spustenie
