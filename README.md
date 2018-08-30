@@ -40,13 +40,15 @@ Pre Windows je mozne pouzit nastroj [GitBash](https://git-scm.com/download/win).
 
 #### PyCharm
 
-Je mozne vyuzit [PyCharm IDE](https://www.jetbrains.com/pycharm/), ktory pracuje priamo s Pythnom. 
+Je mozne vyuzit [PyCharm IDE](https://www.jetbrains.com/pycharm/), ktory pracuje priamo s Pythonem. 
 1. `File->Open` pre otvorenie `PROJECT_ROOT_FOLDER`
 2. V `Run->Edit Configurations` v casti `Script parameters` sa nastavuju parametre vstupu
     - Napr.: `-gene1=../Ferret/eIF4E1/eIF4E1.ped -gene2=../Ferret/eIF4G1/eIF4G1.ped`
 3. `Run->Run...`
 
 ### Vystup
+
+Vystup sa vypisuje do zlozky `PROJECT_ROOT_FOLDER/output/`.
 
 Skript ma 3 druhy vystupu:
 1. `Gene_1.ped - Gene_2.ped.png` subor
