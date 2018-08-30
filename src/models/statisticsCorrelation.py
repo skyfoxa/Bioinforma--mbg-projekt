@@ -18,7 +18,7 @@ class StatisticsCorrelation:
         self.correlationValue = correlationValue
         self.isCorrelated = False
 
-    def inCorrelation(self, threshold):
+    def isInCorrelation(self, threshold):
         self.isCorrelated = self.correlationValue > threshold
 
 

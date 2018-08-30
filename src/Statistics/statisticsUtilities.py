@@ -68,8 +68,8 @@ class StatisticsUtilities(object):
         result1Vals = result1["values"]
         result2Vals = result2["values"]
         if not Config.SHOW_DELETED_VALUES:
-            result1Vals = list(filter(lambda val: val[2] >= Config.CHI_SQUARED_THRESHOLD, result1Vals))
-            result2Vals = list(filter(lambda val: val[2] >= Config.CHI_SQUARED_THRESHOLD, result2Vals))
+            result1Vals = list(filter(lambda val: val.isCorrelated, result1Vals))
+            result2Vals = list(filter(lambda val: val.isCorrelated, result2Vals))
         else:
             plotName = plotName + "_withDeleted"
 
@@ -96,9 +96,9 @@ class StatisticsUtilities(object):
 
         plt.subplots_adjust(left=0.25, hspace=0.5)
 
-        StatisticsUtilities.__plotHistogram__(axs[1], list(map(lambda val: val[2], result1Vals)), 'r', 'g+',
+        StatisticsUtilities.__plotHistogram__(axs[1], list(map(lambda val: val.correlationValue, result1Vals)), 'r', 'g+',
                                               result1Name)
-        StatisticsUtilities.__plotHistogram__(axs[2], list(map(lambda val: val[2], result2Vals)), 'b', 'y-',
+        StatisticsUtilities.__plotHistogram__(axs[2], list(map(lambda val: val.correlationValue, result2Vals)), 'b', 'y-',
                                               result2Name)
         # StatisticsUtilities.__saveOrShowPlot__(plotName)
 
