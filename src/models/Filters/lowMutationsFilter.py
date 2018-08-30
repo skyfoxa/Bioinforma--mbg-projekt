@@ -18,4 +18,4 @@ class LowMutationsFilter(iFilter):
 
     def filterData(self):
         dataBoolMap = (self.data>0).sum(axis=0)>self.threshold
-        return (self.data[:, dataBoolMap], self.indexesOfGene[dataBoolMap])
+        return self.data[:, dataBoolMap], self.indexesOfGene[dataBoolMap]
