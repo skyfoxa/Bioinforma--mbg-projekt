@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-MAIN='./src/main.py'
-DATA='./Ferret'
+SRC='./src/'
+MAIN='./main.py'
+DATA='../Ferret'
 NEGATIVE="$DATA/Negative"
 
-PYTHONPATH="./src:$PYTHONPATH"
-export PYTHONPATH
+cd $SRC
 
 echo "Test 1 - eIF4E1 vs eIF4G1, Negative checks with COX6B2, GOLGA5, POLG"
 echo "--------------------------------------------------------------------"
