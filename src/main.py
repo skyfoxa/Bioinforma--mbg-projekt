@@ -72,13 +72,14 @@ def main():
 
     mappedSamples = dataHandler.mapSamplesToRealGeneCols(chiSquared.correlations)
     filteredMappedSamples = sc.getCorrelatedValues(mappedSamples)
-    sc.writeSamplesToFile(filteredMappedSamples, fileName = dataHandler.gene1Name+" - "+dataHandler.gene2Name)
+    sc.writeSamplesToFile(filteredMappedSamples,
+                          fileName = Config.OUTPUT_FOLDER_PATH+dataHandler.gene1Name+" - "+dataHandler.gene2Name)
 
     StatisticsUtilities.outputResults(chiSquared.getResults(),
                                       permutationTest.getResults(),
                                       ChiSquared.__name__,
                                       PermutationTest.__name__,
-                                      plotName=dataHandler.gene1Name+" - "+dataHandler.gene2Name
+                                      plotName=Config.OUTPUT_FOLDER_PATH+dataHandler.gene1Name+" - "+dataHandler.gene2Name
                                       )
 
 if __name__ == "__main__":

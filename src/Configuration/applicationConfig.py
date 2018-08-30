@@ -6,6 +6,7 @@ class Config:
     VERBOSE = False
     SHOW_DELETED_VALUES = False
     LARGEST_POSSIBLE_SAMPLE = 150
+    OUTPUT_FOLDER_PATH = "../output/"
 
     @staticmethod
     def setChiSquaredThreshold(chiSquaredValues):
