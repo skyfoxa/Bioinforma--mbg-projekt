@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 
-import numpy as np
-
-from src.Configuration.applicationConfig import Config
 from src.Statistics.statisticsUtilities import *
 from .iStatistics import iStatistics
 

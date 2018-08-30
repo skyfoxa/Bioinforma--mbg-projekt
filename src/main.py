@@ -58,6 +58,7 @@ def main():
     print("###Chi Squared TEST")
     chiSquared = ChiSquared(gene1Filtered, gene2Filtered)
     chiSquared.compute()
+
     chiSquared.printResult()
 
     print("###Permutation TEST")
