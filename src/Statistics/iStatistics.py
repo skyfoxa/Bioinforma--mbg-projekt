@@ -5,6 +5,7 @@ __copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol, Filip Šamánek"
 __email__ = "zvaramar@fel.cvut.cz, hrvolmar@fel.cvut.cz, samanfil@fel.cvut.cz"
 __description__ = "MBG"
 
+
 class iStatistics(object):
     geneMatrix1 = None
     geneMatrix2 = None
@@ -24,4 +25,3 @@ class iStatistics(object):
 
     def printResult(self):
         raise Exception("iStatistics - printResult(self) not implemented")
-

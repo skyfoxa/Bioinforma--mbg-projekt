@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
-import numpy as np
-import urllib.request
 import urllib.error
+import urllib.request
+
+import numpy as np
 
 __authors__ = "Marek Zvara, Marek Hrvol, Filip Šamánek"
 __copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol, Filip Šamánek"

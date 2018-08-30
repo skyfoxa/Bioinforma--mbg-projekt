@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import numpy as np
 import matplotlib
+import numpy as np
 
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -114,10 +114,9 @@ class StatisticsUtilities(object):
 
             mu, std = norm.fit(values)
             y = norm.pdf(bins, mu, std)
-            axs.plot(bins, y, fitLineColor, linewidth=2,  label="Best fit line - " + name)
+            axs.plot(bins, y, fitLineColor, linewidth=2, label="Best fit line - " + name)
         else:
             axs.hist([Config.CHI_SQUARED_THRESHOLD], density=True, alpha=0, color='white', label="Histogram - " + name)
-
 
         StatisticsUtilities.__addLegend__(axs)
 

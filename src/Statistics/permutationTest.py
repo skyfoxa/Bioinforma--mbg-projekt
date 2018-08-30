@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 
-from src.Statistics import *
-import numpy as np
 import matplotlib
+import numpy as np
+
+from src.Statistics import *
+
 matplotlib.use('Agg')
-import matplotlib.mlab as mlab
-import matplotlib.pyplot as plt
 
 __authors__ = "Marek Zvara, Marek Hrvol, Filip Šamánek"
 __copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol, Filip Šamánek"
 __email__ = "zvaramar@fel.cvut.cz, hrvolmar@fel.cvut.cz, samanfil@fel.cvut.cz"
 __description__ = "MBG"
+
 
 class PermutationTest(iStatistics):
     testResults = {}
@@ -21,7 +22,6 @@ class PermutationTest(iStatistics):
 
         if not issubclass(self.test, iStatistics):
             raise AttributeError("testClass must be subclass of iStatistics")
-
 
     def __permutate__(self, geneMatrix):
         return np.random.permutation(geneMatrix)

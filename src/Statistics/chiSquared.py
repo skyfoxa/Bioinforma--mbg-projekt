@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
-from .iStatistics import iStatistics
-from src.Statistics.statisticsUtilities import *
 import numpy as np
+
 from src.Configuration.applicationConfig import Config
+from src.Statistics.statisticsUtilities import *
+from .iStatistics import iStatistics
 
 __authors__ = "Marek Zvara, Marek Hrvol, Filip Šamánek"
 __copyright__ = "Copyright 2018, Marek Zvara, Marek Hrvol, Filip Šamánek"
@@ -41,12 +42,10 @@ class ChiSquared(iStatistics):
         for idx, sample in enumerate(self.vals):
             self.vals[idx] += (sample[2] > Config.CHI_SQUARED_THRESHOLD,)
 
-
     def getResults(self):
         classes = np.array(list(map(lambda val: val[3], self.vals)))
         positive = (classes == True).sum()
         negative = (classes == False).sum()
-
 
         return {"values": self.vals, "positive": positive, "negative": negative,
                 "ratio": float(positive) / float(negative) * 100}
