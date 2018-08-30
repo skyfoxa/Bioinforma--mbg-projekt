@@ -2,6 +2,8 @@
 
 import argparse
 import os
+import sys
+sys.path.append('../')
 from src.models import DataHandler
 from src.Statistics import *
 from src.models.Filters import *
