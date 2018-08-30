@@ -80,7 +80,7 @@ Skript je spustitelny cez:
 * python main.py -dataPath={path_to_data_folder}
 	* Ak priznak **-fetch** nie je definovany, pouziju sa data v zlozke urcenej cestou 
 	  **-dataPath**
-	* Data zostavaju zachoane, nic sa nemaze.
+	* Data zostavaju zachovane, nic sa nemaze.
 
 ### Dependencies
 
