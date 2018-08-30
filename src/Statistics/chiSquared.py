@@ -38,7 +38,8 @@ class ChiSquared(iStatistics):
         return np.sum(np.divide(np.square(np.subtract(observed, expected)), expected))
 
     def __classifySamples__(self):
-
+        # TODO: Refactor Sample array to Object
+        #       Sample - [idx1, idx2, chiValue]
         for idx, sample in enumerate(self.vals):
             self.vals[idx] += (sample[2] > Config.CHI_SQUARED_THRESHOLD,)
 
